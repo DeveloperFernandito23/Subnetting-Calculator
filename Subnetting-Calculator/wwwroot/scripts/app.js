@@ -3,7 +3,7 @@ export function totalHost() {
     var values = [];
 
     for (var i = 0; i < hosts.length; i++) {
-        values.push(hosts[i].value);
+        values.push(parseInt(hosts[i].value));
     }
 
     return values;

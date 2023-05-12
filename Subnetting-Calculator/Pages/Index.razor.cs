@@ -42,7 +42,7 @@ namespace Subnetting_Calculator.Pages
         {
             Console.WriteLine(string.Join(',', _list));
 
-            ssCheckHostJS();
+            await CheckHostJS();
 
             Console.WriteLine(string.Join(',', _list));
 
