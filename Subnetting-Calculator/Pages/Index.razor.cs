@@ -38,5 +38,10 @@ namespace Subnetting_Calculator.Pages
 
             return totalHostsAvaliable > totalHost;
         }
+
+        private void Calculate()
+        {
+
+        }
     }
 }

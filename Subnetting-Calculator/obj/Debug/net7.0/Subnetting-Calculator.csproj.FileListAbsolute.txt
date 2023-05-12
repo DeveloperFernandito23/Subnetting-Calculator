@@ -1662,3 +1662,12 @@ C:\Users\Fernando\Documents\Programacion\Subnetting-Calculator\Subnetting-Calcul
 C:\Users\Fernando\Documents\Programacion\Subnetting-Calculator\Subnetting-Calculator\obj\Debug\net7.0\refint\Subnetting-Calculator.dll
 C:\Users\Fernando\Documents\Programacion\Subnetting-Calculator\Subnetting-Calculator\obj\Debug\net7.0\Subnetting-Calculator.pdb
 C:\Users\Fernando\Documents\Programacion\Subnetting-Calculator\Subnetting-Calculator\obj\Debug\net7.0\ref\Subnetting-Calculator.dll
+C:\Users\Profesor\Desktop\Subnetting-Calculator\Subnetting-Calculator\obj\Debug\net7.0\Subnetting-Calculator.csproj.AssemblyReference.cache
+C:\Users\Profesor\Desktop\Subnetting-Calculator\Subnetting-Calculator\obj\Debug\net7.0\Subnetting-Calculator.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Profesor\Desktop\Subnetting-Calculator\Subnetting-Calculator\obj\Debug\net7.0\Subnetting-Calculator.AssemblyInfoInputs.cache
+C:\Users\Profesor\Desktop\Subnetting-Calculator\Subnetting-Calculator\obj\Debug\net7.0\Subnetting-Calculator.AssemblyInfo.cs
+C:\Users\Profesor\Desktop\Subnetting-Calculator\Subnetting-Calculator\obj\Debug\net7.0\Subnetting-Calculator.csproj.CoreCompileInputs.cache
+C:\Users\Profesor\Desktop\Subnetting-Calculator\Subnetting-Calculator\obj\Debug\net7.0\Subnetting-Calculator.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\Profesor\Desktop\Subnetting-Calculator\Subnetting-Calculator\obj\Debug\net7.0\Subnetting-Calculator.dll
+C:\Users\Profesor\Desktop\Subnetting-Calculator\Subnetting-Calculator\obj\Debug\net7.0\refint\Subnetting-Calculator.dll
+C:\Users\Profesor\Desktop\Subnetting-Calculator\Subnetting-Calculator\obj\Debug\net7.0\Subnetting-Calculator.pdb
