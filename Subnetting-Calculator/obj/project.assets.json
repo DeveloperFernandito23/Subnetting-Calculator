@@ -1801,23 +1801,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Fernando\\.nuget\\packages\\": {},
+    "C:\\Users\\tonys\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Fernando\\Documents\\Programacion\\Subnetting-Calculator\\Subnetting-Calculator\\Subnetting-Calculator.csproj",
+      "projectUniqueName": "C:\\Users\\tonys\\OneDrive\\Documentos\\GitHub\\Subnetting-Calculator\\Subnetting-Calculator\\Subnetting-Calculator.csproj",
       "projectName": "Subnetting-Calculator",
-      "projectPath": "C:\\Users\\Fernando\\Documents\\Programacion\\Subnetting-Calculator\\Subnetting-Calculator\\Subnetting-Calculator.csproj",
-      "packagesPath": "C:\\Users\\Fernando\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Fernando\\Documents\\Programacion\\Subnetting-Calculator\\Subnetting-Calculator\\obj\\",
+      "projectPath": "C:\\Users\\tonys\\OneDrive\\Documentos\\GitHub\\Subnetting-Calculator\\Subnetting-Calculator\\Subnetting-Calculator.csproj",
+      "packagesPath": "C:\\Users\\tonys\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\tonys\\OneDrive\\Documentos\\GitHub\\Subnetting-Calculator\\Subnetting-Calculator\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\Fernando\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\tonys\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],

@@ -2,7 +2,7 @@
 
 <PageTitle>Subnetting Calculator</PageTitle>
 
-<div id ="main-container">
+<div id="main-container">
 	<div id="base-ip">
 		<p>Base IP</p>
 		<input type="text"/>
@@ -24,7 +24,7 @@
 					{
 						<tr>
 							<td><input type="text" value="LAN @i" /></td>
-							<td><input type="text" /></td>
+							<td><input type="number" min="2" @bind="size" class="size"/></td>
 						</tr>
 					}
 				</tbody>
@@ -33,18 +33,11 @@
 		</div>
 		<div id="subnet-number">
 			<p> Number of subnets</p>
-			<input type="number" min="2" @bind="subnetNumber" />
+			<input type="number" min="2" @bind="subnetNumber"/>
 		</div>
 	</div>
 	<div id="submit-btn">
-		<input type="submit" value="Calculate"/>
+		<input type="submit" value="Calculate" @onclick="CheckHosts"/>
 	</div>
 	
 </div>
-
-@code {
-	private int subnetNumber = 3;
-
-	
-
-}
