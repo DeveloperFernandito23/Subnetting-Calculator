@@ -21,7 +21,7 @@
 					</tr>
 				</thead>
 				<tbody>
-					@for(int i = 1; i <= subnetNumber; i++)
+					@for(int i = 1; i <= _subnetNumber; i++)
 					{
 						<tr>
 							<td><input type="text" value="LAN @i" /></td>
@@ -34,7 +34,7 @@
 		</div>
 		<div id="subnet-number">
 			<p> Number of subnets</p>
-			<input type="number" min="2" @bind="subnetNumber"/>
+			<input type="number" min="2" @bind="_subnetNumber"/>
 		</div>
 	</div>
 	<div id="submit-btn">

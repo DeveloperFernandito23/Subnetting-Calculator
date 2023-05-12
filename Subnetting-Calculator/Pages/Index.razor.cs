@@ -14,6 +14,7 @@ using Microsoft.JSInterop;
 using Subnetting_Calculator;
 using Subnetting_Calculator.Shared;
 using System.Runtime.CompilerServices;
+using System.Collections.Concurrent;
 
 namespace Subnetting_Calculator.Pages
 {
@@ -23,11 +24,10 @@ namespace Subnetting_Calculator.Pages
 
         private IJSInProcessObjectReference _module;
 
-        static private int subnetNumber = 3;
-        static private int? size;
-        static private long? totalHost;
-        static private int mask = 24;
-        static private List<int> _list = new();
+        static private int _subnetNumber = 3;
+        static private long? _totalHost;
+        static private int _mask = 24;
+        static private List<int?> _list = new();
 
         protected override async Task OnInitializedAsync()
         {
@@ -36,31 +36,42 @@ namespace Subnetting_Calculator.Pages
             _module = await JSRuntime.InvokeAsync<IJSInProcessObjectReference>("import", "./scripts/app.js");
         }
 
-        private async Task CheckHostJS() 
-        {
-            _list = await _module.InvokeAsync<List<int>>("totalHost");
-        }
+            
+        private async Task CheckHostJS() => _list = await _module.InvokeAsync<List<int?>>("totalHost");
+        private async Task ErrorJS() => await _module.InvokeVoidAsync("error");
 
-        private async Task<bool> CheckHosts()
-        {
-            Console.WriteLine(string.Join(',', _list));
 
+		private async Task<bool> CheckHosts()
+        {
             await CheckHostJS();
 
-            Console.WriteLine(string.Join(',', _list));
+            bool isNull = _list.All(x =>  x != null); 
 
-            totalHost = _list.Sum();
+            _totalHost = _list.Sum();
 
-            int avaliableHosts = TOTALBITS - mask;
+            int avaliableHosts = TOTALBITS - _mask;
 
             double totalHostsAvaliable = Math.Pow(2, avaliableHosts);
 
-            return totalHostsAvaliable > totalHost;
+            return isNull && totalHostsAvaliable > _totalHost;
         }
 
         private async Task Calculate()
         {
-            await CheckHosts();
+            
+            bool checkHosts = await CheckHosts();
+            bool checkIPBase = true;
+            bool checkSubnets = true;
+
+
+			if (checkIPBase && checkSubnets && checkHosts) 
+            {
+                Console.WriteLine("SI");
+            }
+            else
+            {
+                await ErrorJS();
+            }
         }
     }
 }

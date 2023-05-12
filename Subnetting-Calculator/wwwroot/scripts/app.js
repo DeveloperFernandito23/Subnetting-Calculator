@@ -8,3 +8,7 @@ export function totalHost() {
 
     return values;
 }
+
+export function error() {
+    alert("ERROR");
+}
