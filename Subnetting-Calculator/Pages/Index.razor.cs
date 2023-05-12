@@ -25,7 +25,8 @@ namespace Subnetting_Calculator.Pages
         static private long? totalHost;
 		static private int mask = 24;
 
-		private void CheckHosts()
+
+		private bool CheckHosts()
         {
 			totalHost = size != null ? (size * subnetNumber) + (2 * subnetNumber) : null;
 
@@ -35,7 +36,7 @@ namespace Subnetting_Calculator.Pages
 
             double totalHostsAvaliable = Math.Pow(2, avaliableHosts);
 
-            Console.WriteLine(totalHostsAvaliable > totalHost);
+            return totalHostsAvaliable > totalHost;
         }
     }
 }
