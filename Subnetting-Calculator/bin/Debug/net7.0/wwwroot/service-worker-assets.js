@@ -73,7 +73,7 @@
       "url": "sample-data\/weather.json"
     },
     {
-      "hash": "sha256-x5iVBGnT5FRrpr+iPSQU9geB6vV07Ciq4tfhRZQWKG4=",
+      "hash": "sha256-P4XRKO3DRrv9MlUPIx4QNkkf7kCfUgDYbUFzr53fkUU=",
       "url": "Subnetting-Calculator.styles.css"
     },
     {
@@ -869,11 +869,11 @@
       "url": "_framework\/icudt_no_CJK.dat"
     },
     {
-      "hash": "sha256-7e9pEiFF7FmI\/JBDX\/qHiXeD4J2TYf4xYNl1IheROPQ=",
+      "hash": "sha256-hz0cgXqy+\/lZDKfz3hK\/inhxz\/6xIJxm+OYPr41LUoY=",
       "url": "_framework\/Subnetting-Calculator.dll"
     },
     {
-      "hash": "sha256-7um03SHXsD5LmMyF29SsNMcjbJcg+CPw8Gt32qjbVsk=",
+      "hash": "sha256-cvt8aGF2Dw0\/QMQ0M+cSENckdjObChfEpaP0XQAJnug=",
       "url": "_framework\/Subnetting-Calculator.pdb"
     },
     {
@@ -881,9 +881,9 @@
       "url": "_framework\/blazor.webassembly.js"
     },
     {
-      "hash": "sha256-i6xmOAi5j+Qh5KsSx5DI3lPTMiChT0v8kzcU70fJl0Q=",
+      "hash": "sha256-KDoqbivJ9qdIHNrrAt\/ZxmupX5dcqgyWaQcNd+9zv3c=",
       "url": "_framework\/blazor.boot.json"
     }
   ],
-  "version": "DFhSFABY"
+  "version": "25zKkkIU"
 };

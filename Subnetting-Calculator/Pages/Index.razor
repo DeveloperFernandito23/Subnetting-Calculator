@@ -20,25 +20,20 @@
 					</tr>
 				</thead>
 				<tbody>
-					<tr>
-						<td><input type="text" value="LAN 1" /></td>
-						<td><input type="text"  /></td>
-					</tr>
-					<tr>
-						<td><input type="text" value="LAN 2" /></td>
-						<td><input type="text" /></td>
-					</tr>
-					<tr>
-						<td><input type="text" value="LAN 3" /></td>
-						<td><input type="text" /></td>
-					</tr>
+					@for(int i = 1; i <= subnetNumber; i++)
+					{
+						<tr>
+							<td><input type="text" value="LAN @i" /></td>
+							<td><input type="text" /></td>
+						</tr>
+					}
 				</tbody>
 			</table>
 
 		</div>
 		<div id="subnet-number">
 			<p> Number of subnets</p>
-			<input type="text" />
+			<input type="number" min="2" @bind="subnetNumber" />
 		</div>
 	</div>
 	<div id="submit-btn">
@@ -46,3 +41,10 @@
 	</div>
 	
 </div>
+
+@code {
+	private int subnetNumber = 3;
+
+	
+
+}
