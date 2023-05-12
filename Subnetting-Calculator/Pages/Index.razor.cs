@@ -55,13 +55,21 @@ namespace Subnetting_Calculator.Pages
 
             return isNull && totalHostsAvaliable > _totalHost;
         }
+        private void CheckMinValue()
+        {
+            if(!(_subnetNumber >= 1))
+            {
+                _subnetNumber = 1;
+            }
+        }
 
-        private async Task Calculate()
+
+		private async Task Calculate()
         {
             
             bool checkHosts = await CheckHosts();
             bool checkIPBase = true;
-            bool checkSubnets = true;
+            bool checkSubnets = _subnetNumber > 0;
 
 
 			if (checkIPBase && checkSubnets && checkHosts) 

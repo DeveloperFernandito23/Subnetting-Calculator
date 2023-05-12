@@ -25,7 +25,7 @@
 					{
 						<tr>
 							<td><input type="text" value="LAN @i" /></td>
-							<td><input type="number" min="2" class="size"/></td>
+							<td><input type="number" min="1" class="size"/></td>
 						</tr>
 					}
 				</tbody>
@@ -34,7 +34,7 @@
 		</div>
 		<div id="subnet-number">
 			<p> Number of subnets</p>
-			<input type="number" min="2" @bind="_subnetNumber"/>
+			<input type="number" min="1" @oninput="CheckMinValue" @bind="_subnetNumber" />
 		</div>
 	</div>
 	<div id="submit-btn">
