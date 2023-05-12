@@ -13,6 +13,7 @@ using Microsoft.AspNetCore.Components.WebAssembly.Http;
 using Microsoft.JSInterop;
 using Subnetting_Calculator;
 using Subnetting_Calculator.Shared;
+using System.Runtime.CompilerServices;
 
 namespace Subnetting_Calculator.Pages
 {
@@ -20,15 +21,32 @@ namespace Subnetting_Calculator.Pages
     {
         private const int TOTALBITS = 32;
 
+        private IJSInProcessObjectReference _module;
+
         static private int subnetNumber = 3;
 		static private int? size;
         static private long? totalHost;
 		static private int mask = 24;
+        static private List<int> _list = new();
 
-
-		private bool CheckHosts()
+        protected override async Task OnInitializedAsync()
         {
-			totalHost = size != null ? (size * subnetNumber) + (2 * subnetNumber) : null;
+            await base.OnInitializedAsync();
+
+            _module = await JSRuntime.InvokeAsync<IJSInProcessObjectReference>("import", "./scripts/app.js");
+        }
+
+        private async Task CheckHostJS() => _list = await _module.InvokeAsync<List<int>>("totalHost");
+
+        private async Task CheckHosts()
+        {
+            Console.WriteLine(string.Join(',', _list));
+
+            await CheckHostJS();
+
+            Console.WriteLine(string.Join(',', _list));
+
+            totalHost = size != null ? (size * subnetNumber) + (2 * subnetNumber) : null;
 
 			Console.WriteLine(totalHost);
 
@@ -36,12 +54,12 @@ namespace Subnetting_Calculator.Pages
 
             double totalHostsAvaliable = Math.Pow(2, avaliableHosts);
 
-            return totalHostsAvaliable > totalHost;
+            //totalHostsAvaliable > totalHost;
         }
 
         private void Calculate()
         {
-
+            CheckHosts();
         }
     }
 }
