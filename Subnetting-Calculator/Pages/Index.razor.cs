@@ -18,15 +18,24 @@ namespace Subnetting_Calculator.Pages
 {
     public partial class Index
     {
+        private const int TOTALBITS = 32;
+
         static private int subnetNumber = 3;
 		static private int? size;
-        static private double? totalHost;
+        static private long? totalHost;
+		static private int mask = 24;
 
-        private void CheckHosts()
+		private void CheckHosts()
         {
 			totalHost = size != null ? (size * subnetNumber) + (2 * subnetNumber) : null;
 
 			Console.WriteLine(totalHost);
+
+            int avaliableHosts = TOTALBITS - mask;
+
+            double totalHostsAvaliable = Math.Pow(2, avaliableHosts);
+
+            Console.WriteLine(totalHostsAvaliable > totalHost);
         }
     }
 }
