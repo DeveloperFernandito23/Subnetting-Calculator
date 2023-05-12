@@ -1,0 +1,29 @@
+# Carpeta/obj/
+obj/
+
+# Carpeta/bin/
+bin/
+
+# Carpeta/.vs/
+.vs/
+
+# Archivo/.vsconfig
+.vsconfig
+
+# Carpeta/.vscode/
+.vscode/
+
+# Archivo/*.suo
+*.suo
+
+# Archivo/*.user
+*.user
+
+# Archivo/*.bak
+*.bak
+
+# Archivo/*.cache
+*.cache
+
+# Archivo/*.log
+*.log
