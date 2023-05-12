@@ -27,21 +27,23 @@ namespace Subnetting_Calculator.Pages
 
 
 		private bool CheckHosts()
-        {
+		 {
 			totalHost = size != null ? (size * subnetNumber) + (2 * subnetNumber) : null;
 
 			Console.WriteLine(totalHost);
 
-            int avaliableHosts = TOTALBITS - mask;
+            //int avaliableHosts = TOTALBITS - mask;
 
-            double totalHostsAvaliable = Math.Pow(2, avaliableHosts);
+            //double totalHostsAvaliable = Math.Pow(2, avaliableHosts);
 
-            return totalHostsAvaliable > totalHost;
+            //bool result = totalHostsAvaliable > totalHost;
+
+            Console.WriteLine(total);
         }
 
         private void Calculate()
         {
-
+           
         }
     }
 }
