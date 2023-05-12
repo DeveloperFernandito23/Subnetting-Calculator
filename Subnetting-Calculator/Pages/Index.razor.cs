@@ -36,17 +36,20 @@ namespace Subnetting_Calculator.Pages
             _module = await JSRuntime.InvokeAsync<IJSInProcessObjectReference>("import", "./scripts/app.js");
         }
 
-        private async Task CheckHostJS() => _list = await _module.InvokeAsync<List<int>>("totalHost");
+        private async Task CheckHostJS() 
+        {
+            _list = await _module.InvokeAsync<List<int>>("totalHost");
+        }
 
         private async Task CheckHosts()
         {
             Console.WriteLine(string.Join(',', _list));
 
-            ssCheckHostJS();
+            await CheckHostJS();
 
             Console.WriteLine(string.Join(',', _list));
 
-            totalHost = size != null ? (size * subnetNumber) + (2 * subnetNumber) : null;
+            //totalHost = size != null ? (size * subnetNumber) + (2 * subnetNumber) : null;
 
             Console.WriteLine(totalHost);
 
@@ -57,9 +60,9 @@ namespace Subnetting_Calculator.Pages
             //totalHostsAvaliable > totalHost;
         }
 
-        private void Calculate()
+        private async Task Calculate()
         {
-            CheckHosts();
+            await CheckHosts();
         }
     }
 }
