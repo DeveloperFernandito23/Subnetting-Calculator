@@ -2,7 +2,47 @@
 
 <PageTitle>Subnetting Calculator</PageTitle>
 
+<div id ="main-container">
+	<div id="base-ip">
+		<p>Base IP</p>
+		<input type="text"/>
+	</div>
+	<div id="subnets">
+		<div id="subnet-title">
+			<p>Subnets</p>
+		</div>
+		<div id="subnet-container">
+			<table>
+				<thead>
+					<tr>
+						<th>Name</th>
+						<th>Size</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td><input type="text" value="LAN 1" /></td>
+						<td><input type="text"  /></td>
+					</tr>
+					<tr>
+						<td><input type="text" value="LAN 2" /></td>
+						<td><input type="text" /></td>
+					</tr>
+					<tr>
+						<td><input type="text" value="LAN 3" /></td>
+						<td><input type="text" /></td>
+					</tr>
+				</tbody>
+			</table>
 
-<h1>Hello, world!</h1>
-
-Welcome to your new app.
+		</div>
+		<div id="subnet-number">
+			<p> Number of subnets</p>
+			<input type="text" />
+		</div>
+	</div>
+	<div id="submit-btn">
+		<input type="submit" value="Calculate"/>
+	</div>
+	
+</div>

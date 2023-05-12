@@ -9,25 +9,25 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = browser
 build_property.RootNamespace = Subnetting-Calculator
 build_property.RootNamespace = Subnetting-Calculator
-build_property.ProjectDir = C:\Users\tonys\OneDrive\Documentos\GitHub\Subnetting-Calculator\Subnetting-Calculator\
+build_property.ProjectDir = C:\Users\Fernando\Documents\Programacion\Subnetting-Calculator\Subnetting-Calculator\
 build_property.RazorLangVersion = 7.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Users\tonys\OneDrive\Documentos\GitHub\Subnetting-Calculator\Subnetting-Calculator
+build_property.MSBuildProjectDirectory = C:\Users\Fernando\Documents\Programacion\Subnetting-Calculator\Subnetting-Calculator
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/Users/tonys/OneDrive/Documentos/GitHub/Subnetting-Calculator/Subnetting-Calculator/App.razor]
+[C:/Users/Fernando/Documents/Programacion/Subnetting-Calculator/Subnetting-Calculator/App.razor]
 build_metadata.AdditionalFiles.TargetPath = QXBwLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/tonys/OneDrive/Documentos/GitHub/Subnetting-Calculator/Subnetting-Calculator/_Imports.razor]
+[C:/Users/Fernando/Documents/Programacion/Subnetting-Calculator/Subnetting-Calculator/_Imports.razor]
 build_metadata.AdditionalFiles.TargetPath = X0ltcG9ydHMucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/tonys/OneDrive/Documentos/GitHub/Subnetting-Calculator/Subnetting-Calculator/Pages/Index.razor]
+[C:/Users/Fernando/Documents/Programacion/Subnetting-Calculator/Subnetting-Calculator/Pages/Index.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW5kZXgucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = b-kqscipriya
 
-[C:/Users/tonys/OneDrive/Documentos/GitHub/Subnetting-Calculator/Subnetting-Calculator/Shared/MainLayout.razor]
+[C:/Users/Fernando/Documents/Programacion/Subnetting-Calculator/Subnetting-Calculator/Shared/MainLayout.razor]
 build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXE1haW5MYXlvdXQucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = b-bsxp2z59v7

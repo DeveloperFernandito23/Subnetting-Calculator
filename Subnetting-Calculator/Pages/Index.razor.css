@@ -1,3 +1,35 @@
-﻿article {
-    background-color: blue;
+﻿#main-container{
+    width: 50%;
+}
+
+#base-ip {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    align-content: center;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+#subnets {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+#subnet-number {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    flex: 2 100%;
+    align-items: flex-start;
+    gap: 45px;
+}
+
+#submit-btn {
+    margin: 2vh 0;
+    display: flex;
+    justify-content: center;
 }
