@@ -6,11 +6,5 @@ export function totalHost() {
         values.push(hosts[i].value);
     }
 
-    //hosts.forEach(host => {
-    //    values.push(host.value);
-    //});
-
-    console.log(values);
-
     return values;
 }
