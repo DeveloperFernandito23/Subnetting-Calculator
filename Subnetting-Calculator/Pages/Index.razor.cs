@@ -23,7 +23,7 @@ namespace Subnetting_Calculator.Pages
         static private int subnetNumber = 3;
 		static private int? size;
         static private long? totalHost;
-		static private int mask = 24;
+		static private int mask = 23;
 
 
 		private bool CheckHosts()
