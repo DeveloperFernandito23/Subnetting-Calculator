@@ -41,7 +41,7 @@ namespace Subnetting_Calculator.Pages
             _list = await _module.InvokeAsync<List<int>>("totalHost");
         }
 
-        private async Task CheckHosts()
+        private async Task<bool> CheckHosts()
         {
             Console.WriteLine(string.Join(',', _list));
 
@@ -49,15 +49,13 @@ namespace Subnetting_Calculator.Pages
 
             Console.WriteLine(string.Join(',', _list));
 
-            //totalHost = size != null ? (size * subnetNumber) + (2 * subnetNumber) : null;
-
-            Console.WriteLine(totalHost);
+            totalHost = _list.Sum();
 
             int avaliableHosts = TOTALBITS - mask;
 
             double totalHostsAvaliable = Math.Pow(2, avaliableHosts);
 
-            //totalHostsAvaliable > totalHost;
+            return totalHostsAvaliable > totalHost;
         }
 
         private async Task Calculate()
