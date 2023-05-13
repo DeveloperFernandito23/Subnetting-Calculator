@@ -1,4 +1,5 @@
 using Microsoft.JSInterop;
+using Subnetting_Calculator.Classes;
 using System.Text.RegularExpressions;
 
 namespace Subnetting_Calculator.Pages
@@ -81,8 +82,6 @@ namespace Subnetting_Calculator.Pages
 
 			double totalHostsAvaliable = Math.Pow(2, avaliableHosts);
 
-			Console.WriteLine(avaliableHosts);
-
             return isNull && totalHostsAvaliable >= TotalHost;
 		}
 		
@@ -97,7 +96,8 @@ namespace Subnetting_Calculator.Pages
 			{
 				if (!Vlsm)
 				{
-					
+					Subnetting subnetting = new Subnetting();
+					subnetting.SubnetFlsm(IpBase, Mask);
 				}
 				else
 				{
