@@ -82,9 +82,9 @@ namespace Subnetting_Calculator.Pages
 
 			double totalHostsAvaliable = Math.Pow(2, avaliableHosts);
 
-            return isNull && totalHostsAvaliable >= TotalHost;
+			return isNull && totalHostsAvaliable >= TotalHost;
 		}
-		
+
 		private async Task Calculate()
 		{
 			bool checkIPBase = await CheckIp();

@@ -1,6 +1,4 @@
-﻿using System.Linq.Expressions;
-using System.Numerics;
-using System.Text.RegularExpressions;
+﻿using System.Text.RegularExpressions;
 
 namespace Subnetting_Calculator.Classes
 {
@@ -25,7 +23,16 @@ namespace Subnetting_Calculator.Classes
 
 			List<string> ipBaseCalculated = MultiplyInBinary(ipInBinaryDivide, maskInBinaryDivide);
 
-			SearchRaisedToTwo(subnetsRequired);
+			int raisedTwoSubnet = SearchRaisedToTwo(subnetsRequired);
+
+			int newMask = mask + raisedTwoSubnet;
+
+			int jump = 256 - int.Parse(maskInBinaryDivide.Last());
+			string prueba = string.Concat(ipInBinaryDivide);
+			int takeBroadCast = SearchRaisedToTwo(jump);
+
+			// POR FIIIIN, ESTA ES LA DIRECCION BROADCAST FINAL
+			string ipBroadCast = prueba.Substring(0, 32 - takeBroadCast) + new string('1', takeBroadCast);
 		}
 		public IEnumerable<char> ConvertToBinary(int number)
 		{
@@ -74,7 +81,7 @@ namespace Subnetting_Calculator.Classes
 		{
 			int count = 0;
 
-			while(!(Math.Pow(count, 2) >= subnetsRequired))
+			while (!(Math.Pow(2, count) >= subnetsRequired))
 			{
 				count++;
 			}
