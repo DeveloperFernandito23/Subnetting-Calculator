@@ -1,24 +1,29 @@
-﻿namespace Subnetting_Calculator.Classes
+﻿using System.Text.RegularExpressions;
+
+namespace Subnetting_Calculator.Classes
 {
 	public class Subnetting
 	{
 		public void SubnetFlsm(string ipAddress, int mask)
 		{
-			int firstOct = int.Parse(ipAddress.Split('.')[0]);
-			int secondOct = int.Parse(ipAddress.Split('.')[1]);
-			int thirstOct = int.Parse(ipAddress.Split('.')[2]);
-			int fourthtOct = int.Parse(ipAddress.Split('.')[3]);
+			List<string> maskInBinaryDivide = new List<string>();
+			List<string> ipInBinaryDivide = new List<string>();
 
-			string firsOctInBinary = String.Concat(ConvertToBinary(firstOct)).PadRight(8, '0').PadLeft(8, '0').PadRight(8, '0');
-			string secondOctInBinary = String.Concat(ConvertToBinary(secondOct)).PadRight(8, '0').PadLeft(8, '0').PadRight(8, '0');
-			string thirstOctInBinary = String.Concat(ConvertToBinary(thirstOct)).PadRight(8, '0').PadLeft(8, '0').PadRight(8, '0');
-			string fourthtOctInBinary = String.Concat(ConvertToBinary(fourthtOct)).PadRight(8, '0').PadLeft(8, '0').PadRight(8, '0');
+			foreach (var item in ipAddress.Split('.'))
+			{
+				ipInBinaryDivide.Add(String.Concat(ConvertToBinary(int.Parse(item))).PadRight(8, '0').PadLeft(8, '0'));
+			}
 
 			string maskInBinary = "".PadLeft(mask, '1').PadRight(32, '0');
 
+			foreach (var item in DivideInOct(maskInBinary))
+			{
+				maskInBinaryDivide.Add(item);
+			}
+			
 		}
 		public IEnumerable<char> ConvertToBinary(int number)
-			{
+		{
 			string result = "";
 
 			while (number > 0)
@@ -29,6 +34,21 @@
 			}
 
 			return result.Reverse();
+		}
+		public List<string> DivideInOct(string mask)
+		{
+			List<string> result = new List<string>();
+
+			string pattern = @"\d{1,8}";
+
+			MatchCollection matches = Regex.Matches(mask, pattern);
+
+			foreach (Match match in matches)
+			{
+				result.Add(match.Value);
+			}
+
+			return result;
 		}
 	}
 }
