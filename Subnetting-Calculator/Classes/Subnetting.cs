@@ -6,7 +6,7 @@ namespace Subnetting_Calculator.Classes
 {
 	public class Subnetting
 	{
-		public void SubnetFlsm(string ipAddress, int mask)
+		public void SubnetFlsm(string ipAddress, int mask, int subnetsRequired)
 		{
 			List<string> maskInBinaryDivide = new List<string>();
 			List<string> ipInBinaryDivide = new List<string>();
@@ -23,8 +23,9 @@ namespace Subnetting_Calculator.Classes
 				maskInBinaryDivide.Add(item);
 			}
 
-			MultiplyInBinary(ipInBinaryDivide, maskInBinaryDivide);
+			List<string> ipBaseCalculated = MultiplyInBinary(ipInBinaryDivide, maskInBinaryDivide);
 
+			SearchRaisedToTwo(subnetsRequired);
 		}
 		public IEnumerable<char> ConvertToBinary(int number)
 		{
@@ -68,6 +69,17 @@ namespace Subnetting_Calculator.Classes
 			}
 
 			return result;
+		}
+		public int SearchRaisedToTwo(int subnetsRequired)
+		{
+			int count = 0;
+
+			while(!(Math.Pow(count, 2) >= subnetsRequired))
+			{
+				count++;
+			}
+
+			return count;
 		}
 	}
 }

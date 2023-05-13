@@ -97,7 +97,7 @@ namespace Subnetting_Calculator.Pages
 				if (!Vlsm)
 				{
 					Subnetting subnetting = new Subnetting();
-					subnetting.SubnetFlsm(IpBase, Mask);
+					subnetting.SubnetFlsm(IpBase, Mask, SubnetNumber);
 				}
 				else
 				{
