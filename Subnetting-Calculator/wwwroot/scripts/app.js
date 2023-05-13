@@ -10,5 +10,5 @@ export function totalHost() {
 }
 
 export function error() {
-    alert("ERROR");
+    alert("ERROR AL INTRODUCIR LOS DATOS");
 }

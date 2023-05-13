@@ -24,10 +24,27 @@ namespace Subnetting_Calculator.Pages
 
         private IJSInProcessObjectReference _module;
 
-        static private int _subnetNumber = 3;
-        static private long? _totalHost;
-        static private int _mask = 24;
-        static private List<int?> _list = new();
+        private int _subnetNumber = 3;
+        private long? _totalHost;
+        private int _mask;
+        private List<int?> _list = new();
+        private bool _vlsm;
+
+        private int SubnetNumber { get => _subnetNumber; set
+            {
+                if (!(value >= 1))
+                {
+                    _subnetNumber = 1;
+                }
+                else
+                {
+                    _subnetNumber = value;
+                }
+            } }
+        private long? TotalHost { get => _totalHost; set => _totalHost = value; }
+        private int Mask { get => _mask; set => _mask = value; }
+        private List<int?> List { get => _list; set => _list = value; }
+        private bool Vlsm { get => _vlsm; set => _vlsm = value; }
 
         protected override async Task OnInitializedAsync()
         {
@@ -36,45 +53,41 @@ namespace Subnetting_Calculator.Pages
             _module = await JSRuntime.InvokeAsync<IJSInProcessObjectReference>("import", "./scripts/app.js");
         }
 
-            
-        private async Task CheckHostJS() => _list = await _module.InvokeAsync<List<int?>>("totalHost");
+        private async Task CheckHostJS() => List = await _module.InvokeAsync<List<int?>>("totalHost");
         private async Task ErrorJS() => await _module.InvokeVoidAsync("error");
-
 
 		private async Task<bool> CheckHosts()
         {
             await CheckHostJS();
 
-            bool isNull = _list.All(x =>  x != null); 
+            bool isNull = List.All(x =>  x != null);
 
-            _totalHost = _list.Sum();
+			TotalHost = List.Sum(x => x + 2);
 
-            int avaliableHosts = TOTALBITS - _mask;
+            int avaliableHosts = TOTALBITS - Mask;
 
             double totalHostsAvaliable = Math.Pow(2, avaliableHosts);
 
-            return isNull && totalHostsAvaliable > _totalHost;
+            return isNull && totalHostsAvaliable >= TotalHost;
         }
-        private void CheckMinValue()
-        {
-            if(!(_subnetNumber >= 1))
-            {
-                _subnetNumber = 1;
-            }
-        }
-
 
 		private async Task Calculate()
         {
-            
             bool checkHosts = await CheckHosts();
             bool checkIPBase = true;
-            bool checkSubnets = _subnetNumber > 0;
+            bool checkSubnets = SubnetNumber > 0;
 
 
 			if (checkIPBase && checkSubnets && checkHosts) 
             {
-                Console.WriteLine("SI");
+                if (!Vlsm)
+                {
+
+                }
+                else
+                {
+
+                }
             }
             else
             {
