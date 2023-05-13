@@ -9,6 +9,13 @@ export function totalHost() {
     return values;
 }
 
+export function takeIp() {
+    var ip = document.getElementById("base-ip-value");
+
+
+    return ip.value;
+}
+
 export function error() {
     alert("ERROR AL INTRODUCIR LOS DATOS");
 }
