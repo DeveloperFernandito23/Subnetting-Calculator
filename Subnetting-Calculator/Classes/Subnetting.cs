@@ -26,13 +26,38 @@ namespace Subnetting_Calculator.Classes
 			int raisedTwoSubnet = SearchRaisedToTwo(subnetsRequired);
 
 			int newMask = mask + raisedTwoSubnet;
+			string newMaskInBinary = "".PadLeft(newMask, '1').PadRight(32, '0');
 
-			int jump = 256 - int.Parse(maskInBinaryDivide.Last());
+			List<string> newMaskInBinaryDivide = new List<string>();
+
+			newMaskInBinaryDivide = DivideInOct(newMaskInBinary);
+
+			int jump = 256 - Convert.ToInt32(newMaskInBinaryDivide.Last(), 2);
 			string prueba = string.Concat(ipInBinaryDivide);
 			int takeBroadCast = SearchRaisedToTwo(jump);
 
 			// POR FIIIIN, ESTA ES LA DIRECCION BROADCAST FINAL
 			string ipBroadCast = prueba.Substring(0, 32 - takeBroadCast) + new string('1', takeBroadCast);
+
+			for (int i = 0; i < subnetsRequired; i++)
+			{
+				for (int j = 0; j < ipBaseCalculated.Count; j++)
+				{
+					if (j == 3)
+					{
+						Console.Write(int.Parse(ipBaseCalculated[j]) + (jump * (i + 1)));
+					}
+					else
+					{
+						Console.Write(int.Parse(ipBaseCalculated[j]));
+					}
+				}
+				Console.WriteLine();
+			}
+
+
+			Console.WriteLine(Convert.ToInt32(prueba.Substring(0, 8), 2));
+
 		}
 		public IEnumerable<char> ConvertToBinary(int number)
 		{
