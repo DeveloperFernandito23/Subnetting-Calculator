@@ -14,7 +14,7 @@
 			string thirstOctInBinary = String.Concat(ConvertToBinary(thirstOct)).PadRight(8, '0').PadLeft(8, '0').PadRight(8, '0');
 			string fourthtOctInBinary = String.Concat(ConvertToBinary(fourthtOct)).PadRight(8, '0').PadLeft(8, '0').PadRight(8, '0');
 
-
+			string maskInBinary = "".PadLeft(mask, '1').PadRight(32, '0');
 
 		}
 		public IEnumerable<char> ConvertToBinary(int number)
