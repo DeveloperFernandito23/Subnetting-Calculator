@@ -24,6 +24,8 @@ export function drawResult(paramList) {
     var table = document.getElementsByClassName("table")[0];
     var tbody = table.getElementsByClassName("tbody")[0];
     var thead = table.getElementsByClassName("thead-dark")[0];
+    thead.innerHTML = "";
+    tbody.innerHTML = "";
 
 
     //lan, host, totalHost, ipBase, maskString, cidr, availableHost, broadCast
