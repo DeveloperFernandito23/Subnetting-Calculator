@@ -1,12 +1,12 @@
 using Microsoft.JSInterop;
-using Subnetting_Calculator.Classes;
+using Subnetting_Calculator.Models;
 using System.Text.RegularExpressions;
 
 namespace Subnetting_Calculator.Pages
 {
 	public partial class Index
 	{
-		private const int TOTALBITS = 32;
+		public const int TOTALBITS = 32;
 
 		private IJSInProcessObjectReference _module;
 
@@ -94,10 +94,14 @@ namespace Subnetting_Calculator.Pages
 
 			if (checkIPBase && checkSubnets && checkHosts)
 			{
+				List<int> list = new List<int>();
+
+				List.ForEach(item => list.Add(item.Value));
+
 				if (!Vlsm)
 				{
 					Subnetting subnetting = new Subnetting();
-					subnetting.SubnetFlsm(IpBase, Mask, SubnetNumber);
+					subnetting.SubnetFlsm(list, IpBase, Mask, SubnetNumber);
 				}
 				else
 				{
