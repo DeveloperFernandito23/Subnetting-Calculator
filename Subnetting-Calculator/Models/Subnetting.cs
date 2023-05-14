@@ -137,6 +137,95 @@ namespace Subnetting_Calculator.Models
 			*/
 		}
 
+		public void SubnetVlsm(List<int> hosts, string ipAddress, int mask, int subnetsRequired)
+		{
+			List<string> ipInBinaryDivide = new List<string>();
+			List<string> maskInBinaryDivide = new List<string>();
+
+			foreach (var item in ipAddress.Split('.'))
+			{
+				ipInBinaryDivide.Add(string.Concat(ConvertToBinary(int.Parse(item))).PadLeft(8, '0').PadRight(8, '0'));
+			}
+
+			string maskInBinary = "".PadLeft(mask, '1').PadRight(32, '0');
+
+			foreach (var item in DivideInOct(maskInBinary))
+			{
+				maskInBinaryDivide.Add(item);
+			}
+
+			List<string> ipBaseCalculated = MultiplyInBinary(ipInBinaryDivide, maskInBinaryDivide); //Calcula IP Base
+
+			int hostBits = FindHostBits(hosts.Max(x => x)); //Bits de hosts (Coge el valor máximo porque al ser FLSM todas tienen que ser iguales, pero eso no quiere decir que no puedas meter distintos tamaños en cada subred, por eso se coje el más grande para que todas sean iguales y quepan)
+
+			int newMask = TOTALBITS - hostBits; //Obtenemos la nueva máscara
+			string newMaskInBinary = "".PadLeft(newMask, '1').PadRight(32, '0'); //Pasamos la máscara a binario
+
+			List<string> newMaskInBinaryDivide = DivideInOct(newMaskInBinary); //Dividimos la máscara en octetos
+
+			int changedPosition = FindChangedPosition(newMaskInBinaryDivide); //Calculamos la posición de la máscara que varía
+
+			int jump = (int)Math.Pow(2, hostBits); //Calculamos el salto elevando dos a el número de bits de host sacado arriba
+
+			List<string> jumpInBinary = DivideInOct(string.Concat(ConvertToBinary(jump)).PadLeft(32, '0').PadRight(32, '0')); //Convertimos el salto en binario
+
+			for (int i = 0; i < subnetsRequired; i++)
+			{
+				List<string> ipBaseInBinary = new List<string>();
+
+				ipBaseCalculated.ForEach(item => ipBaseInBinary.Add(string.Concat(ConvertToBinary(int.Parse(item))).PadLeft(8, '0').PadRight(8, '0'))); //Transformamos la IP Base en binario
+
+				Console.WriteLine($"LAN {i + 1}");
+
+				string lan = $"LAN {i + 1}";
+
+				Console.WriteLine(hosts[i]);
+
+				string host = hosts[i].ToString();
+
+				Console.WriteLine($"Host Totales: {jump - 2}");
+
+				string totalHost = (jump - 2).ToString();
+
+				Console.WriteLine($"IP Base: {string.Join('.', ipBaseCalculated)}");
+
+				string ipBase = string.Join('.', ipBaseCalculated);
+
+				Console.WriteLine($"Máscara De Red: {string.Join('.', newMaskInBinaryDivide.Select(item => Convert.ToInt32(item, 2)))}"); //Transformamos la máscara en decimal
+
+				string maskString = string.Join('.', newMaskInBinaryDivide.Select(item => Convert.ToInt32(item, 2)));
+
+				Console.WriteLine($"CIDR: /{newMask}");
+
+				string cidr = $"/{newMask}";
+
+				string broadcastInBinary = string.Concat(ipBaseInBinary).Substring(0, newMask) + new string('1', hostBits); //Conseguimos el BroadCast en Binario
+
+				List<string> broadcastInBinaryDivide = DivideInOct(broadcastInBinary); //Transformamos la IP del BroadCast en decimal
+
+				List<string> broadcast = new();
+
+				broadcastInBinaryDivide.ForEach(item => broadcast.Add(Convert.ToInt32(item, 2).ToString()));
+
+				Console.WriteLine($"Hosts Disponibles: {string.Join('.', Range(ipBaseCalculated, '+'))} - {string.Join('.', Range(broadcast, '-'))}");
+
+				string availableHost = $"{string.Join('.', Range(ipBaseCalculated, '+'))} - {string.Join('.', Range(broadcast, '-'))}";
+
+				Console.WriteLine($"IP BroadCast: {string.Join('.', broadcast)}");
+
+				string broadCast = string.Join('.', broadcast);
+
+				List<string> nextIp = SumInBinary(ipBaseInBinary, jumpInBinary);
+
+				Console.WriteLine("-------------------------------------------------");
+
+				paramsList.Add(new() { lan, host, totalHost, ipBase, maskString, cidr, availableHost, broadCast });
+
+				ipBaseCalculated = nextIp;
+			}
+
+		}
+
 		public List<string> Range(List<string> list, char option)
 		{
 			List<string> result = new List<string>();

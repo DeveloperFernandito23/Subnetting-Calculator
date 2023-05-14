@@ -79,7 +79,22 @@ namespace Subnetting_Calculator.Pages
 			bool isNull = List.All(x => x != null);
 
 			/*TotalHost = List.Sum(x => x + 2);*/ // Esto sería creo que para comprobar en VLSM
-			TotalHost = List.Max() * List.Count;
+			int total = 0;
+
+			if (Vlsm)
+			{
+				foreach (var host in List)
+				{
+					total += (int)Math.Pow(2, SearchRaisedTwo(host.Value));
+				}
+
+				TotalHost = total;
+			}
+			else
+			{
+				TotalHost = List.Max() * List.Count;
+
+			}
 
 			int avaliableHosts = TOTALBITS - Mask;
 
@@ -101,22 +116,35 @@ namespace Subnetting_Calculator.Pages
 
 				List.ForEach(item => list.Add(item.Value));
 
+				Subnetting subnetting = new Subnetting();
+
 				if (!Vlsm)
 				{
-					Subnetting subnetting = new Subnetting();
 					subnetting.SubnetFlsm(list, IpBase, Mask, SubnetNumber);
 					_paramsList = subnetting.paramsList;
 					await DrawResultJS();
 				}
 				else
 				{
-
+					//NO ESTÁ HECHO ES COPIA Y PEGA
+					subnetting.SubnetVlsm(list, IpBase, Mask, SubnetNumber);
 				}
 			}
 			else
 			{
 				await ErrorJS();
 			}
+		}
+		private int SearchRaisedTwo(int host)
+		{
+			int raised = 0;
+
+			while (!(Math.Pow(2, raised)-2 >= host))
+			{
+				raised++;
+			}
+
+			return raised;
 		}
 	}
 }
