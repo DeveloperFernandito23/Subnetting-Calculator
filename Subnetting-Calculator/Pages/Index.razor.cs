@@ -17,6 +17,7 @@ namespace Subnetting_Calculator.Pages
 		private bool _vlsm;
 		private string _ipBaseWithMask;
 		private string _ipBase;
+		private List<List<string>> _paramsList;
 
 		private int SubnetNumber
 		{
@@ -48,7 +49,7 @@ namespace Subnetting_Calculator.Pages
 
 		private async Task CheckHostJS() => List = await _module.InvokeAsync<List<int?>>("totalHost");
 		private async Task CheckIPBaseJS() => IpBaseWithMask = await _module.InvokeAsync<string>("takeIp");
-		private async Task DrawResultJS() => await _module.InvokeVoidAsync("drawResult");
+		private async Task DrawResultJS() => await _module.InvokeVoidAsync("drawResult", _paramsList);
 		private async Task ErrorJS() => await _module.InvokeVoidAsync("error");
 
 		private async Task<bool> CheckIp()
@@ -104,6 +105,8 @@ namespace Subnetting_Calculator.Pages
 				{
 					Subnetting subnetting = new Subnetting();
 					subnetting.SubnetFlsm(list, IpBase, Mask, SubnetNumber);
+					_paramsList = subnetting.paramsList;
+					await DrawResultJS();
 				}
 				else
 				{
@@ -114,11 +117,6 @@ namespace Subnetting_Calculator.Pages
 			{
 				await ErrorJS();
 			}
-		}
-		public async Task DrawResult()
-		{
-			await DrawResultJS();
-
 		}
 	}
 }

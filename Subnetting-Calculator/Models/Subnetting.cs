@@ -1,6 +1,4 @@
-﻿using System.Net;
-using System.Security.Cryptography.X509Certificates;
-using System.Text.RegularExpressions;
+﻿using System.Text.RegularExpressions;
 using Subnetting_Calculator.Pages;
 
 namespace Subnetting_Calculator.Models
@@ -8,6 +6,7 @@ namespace Subnetting_Calculator.Models
 	public class Subnetting
 	{
 		public const int TOTALBITS = 32;
+		public List<List<string>> paramsList = new List<List<string>>();
 
 		public void SubnetFlsm(List<int> hosts, string ipAddress, int mask, int subnetsRequired)
 		{
@@ -44,7 +43,7 @@ namespace Subnetting_Calculator.Models
 			for (int i = 0; i < subnetsRequired; i++)
 			{
 				List<string> ipBaseInBinary = new List<string>();
-				
+
 				ipBaseCalculated.ForEach(item => ipBaseInBinary.Add(string.Concat(ConvertToBinary(int.Parse(item))).PadLeft(8, '0').PadRight(8, '0'))); //Transformamos la IP Base en binario
 
 				Console.WriteLine($"LAN {i + 1}");
@@ -76,14 +75,14 @@ namespace Subnetting_Calculator.Models
 				List<string> broadcastInBinaryDivide = DivideInOct(broadcastInBinary); //Transformamos la IP del BroadCast en decimal
 
 				List<string> broadcast = new();
-				
+
 				broadcastInBinaryDivide.ForEach(item => broadcast.Add(Convert.ToInt32(item, 2).ToString()));
 
 				Console.WriteLine($"Hosts Disponibles: {string.Join('.', Range(ipBaseCalculated, '+'))} - {string.Join('.', Range(broadcast, '-'))}");
 
 				string availableHost = $"{string.Join('.', Range(ipBaseCalculated, '+'))} - {string.Join('.', Range(broadcast, '-'))}";
 
-				Console.WriteLine($"IP BroadCast: {string.Join('.', broadcast)}"); 
+				Console.WriteLine($"IP BroadCast: {string.Join('.', broadcast)}");
 
 				string broadCast = string.Join('.', broadcast);
 
@@ -91,12 +90,12 @@ namespace Subnetting_Calculator.Models
 
 				Console.WriteLine("-------------------------------------------------");
 
-				CallToDraw(lan, host, totalHost, ipBase, maskString, cidr, availableHost, broadCast);
+				paramsList.Add(new() { lan, host, totalHost, ipBase, maskString, cidr, availableHost, broadCast });
 
-				ipBaseCalculated = nextIp;
+                ipBaseCalculated = nextIp;
 			}
 
-			
+
 
 			/*
 			string prueba = string.Concat(ipInBinaryDivide);
@@ -162,10 +161,10 @@ namespace Subnetting_Calculator.Models
 
 		public void GetRange(string ipAddressBase, string ipAddressEnd)
 		{
-			for(int i = int.Parse(ipAddressBase.Split('.')[3]); i < int.Parse(ipAddressEnd.Split('.')[3]); i++)
+			for (int i = int.Parse(ipAddressBase.Split('.')[3]); i < int.Parse(ipAddressEnd.Split('.')[3]); i++)
 			{
-                Console.WriteLine(ipAddressBase.Split('.')[0] + ipAddressBase.Split('.')[1]+ ipAddressBase.Split('.')[2] + i);
-            }
+				Console.WriteLine(ipAddressBase.Split('.')[0] + ipAddressBase.Split('.')[1] + ipAddressBase.Split('.')[2] + i);
+			}
 		}
 
 		public IEnumerable<char> ConvertToBinary(int number)
@@ -231,7 +230,7 @@ namespace Subnetting_Calculator.Models
 		{//He cambiado este método, porque lo que hacía antes era buscar el elevado para el número de subredes, y lo he cambiado para que directamente busque el elevado para el mayor número de hosts
 			int number = 0;
 
-			while (!(Math.Pow(2, number)-2 >= maxHost)) number++;
+			while (!(Math.Pow(2, number) - 2 >= maxHost)) number++;
 
 			return number;
 
@@ -260,13 +259,5 @@ namespace Subnetting_Calculator.Models
 
 			return position;
 		}
-
-		public List<string> CallToDraw()
-		{
-			List<String> result = new List<string>();
-
-			return result;
-		}
-		
 	}
 }
