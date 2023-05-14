@@ -76,7 +76,8 @@ namespace Subnetting_Calculator.Pages
 
 			bool isNull = List.All(x => x != null);
 
-			TotalHost = List.Sum(x => x + 2);
+			/*TotalHost = List.Sum(x => x + 2);*/ // Esto sería creo que para comprobar en VLSM
+			TotalHost = List.Max() * List.Count;
 
 			int avaliableHosts = TOTALBITS - Mask;
 
