@@ -31,13 +31,15 @@ export function drawResult() {
     var column3Head = document.createElement("th");
     column3Head.innerHTML = "Mask";
     var column4Head = document.createElement("th");
-    column4Head.innerHTML = "Range";
+    column4Head.innerHTML = "Mask";
     var column5Head = document.createElement("th");
-    column5Head.innerHTML = "Broadcast";
+    column5Head.innerHTML = "Range";
     var column6Head = document.createElement("th");
-    column6Head.innerHTML = "Size Required";
+    column6Head.innerHTML = "Broadcast";
     var column7Head = document.createElement("th");
-    column6Head.innerHTML = "New Size";
+    column7Head.innerHTML = "Size Required";
+    var column8Head = document.createElement("th");
+    column8Head.innerHTML = "New Size";
 
     table.appendChild(rowHead);
     rowHead.appendChild(column1Head);
@@ -47,6 +49,7 @@ export function drawResult() {
     rowHead.appendChild(column5Head);
     rowHead.appendChild(column6Head);
     rowHead.appendChild(column7Head);
+    rowHead.appendChild(column8Head);
 
     console.log("funciona");
 

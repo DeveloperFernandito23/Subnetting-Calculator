@@ -104,7 +104,6 @@ namespace Subnetting_Calculator.Pages
 				{
 					Subnetting subnetting = new Subnetting();
 					subnetting.SubnetFlsm(list, IpBase, Mask, SubnetNumber);
-					await DrawResultJS();
 				}
 				else
 				{
@@ -115,6 +114,11 @@ namespace Subnetting_Calculator.Pages
 			{
 				await ErrorJS();
 			}
+		}
+		public async Task DrawResult()
+		{
+			await DrawResultJS();
+
 		}
 	}
 }

@@ -49,15 +49,27 @@ namespace Subnetting_Calculator.Models
 
 				Console.WriteLine($"LAN {i + 1}");
 
-				Console.WriteLine($"Host Pedidos: {hosts[i]}");
+				string lan = $"LAN {i + 1}";
+
+				Console.WriteLine(hosts[i]);
+
+				string host = hosts[i].ToString();
 
 				Console.WriteLine($"Host Totales: {jump - 2}");
 
+				string totalHost = (jump - 2).ToString();
+
 				Console.WriteLine($"IP Base: {string.Join('.', ipBaseCalculated)}");
+
+				string ipBase = string.Join('.', ipBaseCalculated);
 
 				Console.WriteLine($"Máscara De Red: {string.Join('.', newMaskInBinaryDivide.Select(item => Convert.ToInt32(item, 2)))}"); //Transformamos la máscara en decimal
 
+				string maskString = string.Join('.', newMaskInBinaryDivide.Select(item => Convert.ToInt32(item, 2)));
+
 				Console.WriteLine($"CIDR: /{newMask}");
+
+				string cidr = $"/{newMask}";
 
 				string broadcastInBinary = string.Concat(ipBaseInBinary).Substring(0, newMask) + new string('1', hostBits); //Conseguimos el BroadCast en Binario
 
@@ -68,12 +80,18 @@ namespace Subnetting_Calculator.Models
 				broadcastInBinaryDivide.ForEach(item => broadcast.Add(Convert.ToInt32(item, 2).ToString()));
 
 				Console.WriteLine($"Hosts Disponibles: {string.Join('.', Range(ipBaseCalculated, '+'))} - {string.Join('.', Range(broadcast, '-'))}");
-				
+
+				string availableHost = $"{string.Join('.', Range(ipBaseCalculated, '+'))} - {string.Join('.', Range(broadcast, '-'))}";
+
 				Console.WriteLine($"IP BroadCast: {string.Join('.', broadcast)}"); 
+
+				string broadCast = string.Join('.', broadcast);
 
 				List<string> nextIp = SumInBinary(ipBaseInBinary, jumpInBinary);
 
 				Console.WriteLine("-------------------------------------------------");
+
+				CallToDraw(lan, host, totalHost, ipBase, maskString, cidr, availableHost, broadCast);
 
 				ipBaseCalculated = nextIp;
 			}
@@ -228,7 +246,7 @@ namespace Subnetting_Calculator.Models
 			//return count;
 		}
 
-		public int FindChangedPosition(List<string> mask)
+		public int FindChangedPosition(List<string> mask) //11111111.11111111.11111111.110000000
 		{
 			int position = 0;
 			bool change = true;
@@ -242,5 +260,13 @@ namespace Subnetting_Calculator.Models
 
 			return position;
 		}
+
+		public List<string> CallToDraw()
+		{
+			List<String> result = new List<string>();
+
+			return result;
+		}
+		
 	}
 }
