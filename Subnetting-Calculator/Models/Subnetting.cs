@@ -213,7 +213,7 @@ namespace Subnetting_Calculator.Models
 		{//He cambiado este método, porque lo que hacía antes era buscar el elevado para el número de subredes, y lo he cambiado para que directamente busque el elevado para el mayor número de hosts
 			int number = 0;
 
-			while (!(Math.Pow(2, number) >= maxHost)) number++;
+			while (!(Math.Pow(2, number)-2 >= maxHost)) number++;
 
 			return number;
 
