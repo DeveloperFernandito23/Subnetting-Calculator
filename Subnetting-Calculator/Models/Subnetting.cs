@@ -156,7 +156,7 @@ namespace Subnetting_Calculator.Models
 
 			List<string> ipBaseCalculated = MultiplyInBinary(ipInBinaryDivide, maskInBinaryDivide); //Calcula IP Base
 
-
+			hosts = hosts.OrderByDescending(x=> x).ToList();
 			
 			for (int i = 0; i < subnetsRequired; i++)
 			{
