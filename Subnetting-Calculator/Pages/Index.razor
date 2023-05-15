@@ -4,16 +4,20 @@
 
 <PageTitle>Subnetting Calculator</PageTitle>
 
-<div id="main-container">
-	<div id="base-ip">
-		<p>Base IP</p>
-		<input type="text" id="base-ip-value"/>
+<div id="main-container" class="container border rounded">
+	<div id="base-ip" class="row">
+		<div class="col-md-3">
+			<p>Base IP</p>
+		</div>
+		<div class="col-md-3">
+			<input type="text" id="base-ip-value" />
+		</div>
 	</div>
-	<div id="subnets">
-		<div id="subnet-title">
+	<div id="subnets" class="row">
+		<div id="subnet-title" class="col-md-3">
 			<p>Subnets</p>
 		</div>
-		<div id="subnet-container">
+		<div id="subnet-container" class="col-md-3">
 			<table>
 				<thead>
 					<tr>
@@ -33,17 +37,25 @@
 			</table>
 
 		</div>
-		<div id="subnet-number">
-			<p> Number of subnets</p>
-			<input type="number" min="1" @bind="SubnetNumber"/>
+		<div id="subnet-number" class="row">
+			<div class="col-md-3">
+				<p> Number of subnets</p>
+			</div>
+			<div class="col-md-3">
+				<input type="number" min="1" @bind="SubnetNumber" />
+			</div>
 		</div>
 	</div>
-	<div id="submit-btn">
-		<p>VLSM</p>
-		<input type="checkbox" @bind="Vlsm"/>
-		<input type="submit" value="Calculate" @onclick="Calculate"/>
+	<div id="submit-btn" class="d-flex flex-column flex-wrap align-content-center">
+		<div class="col-3">
+			<input type="checkbox" @bind="Vlsm" class="form-check-input"/>
+			<label class="form-check-label" for="flexCheckChecked">
+				VLSM
+			</label>
+		</div>
+		<input type="submit" value="Calculate" @onclick="Calculate" class="btn btn-primary" />
+
 	</div>
-	
 </div>
 
 <div class="table-responsive">

@@ -94,47 +94,6 @@ namespace Subnetting_Calculator.Models
 
                 ipBaseCalculated = nextIp;
 			}
-
-
-
-			/*
-			string prueba = string.Concat(ipInBinaryDivide);
-			int takeBroadCast = SearchRaisedToTwo(jump);
-
-			// POR FIIIIN, ESTA ES LA DIRECCION BROADCAST FINAL
-			string ipBroadCast = prueba.Substring(0, 32 - takeBroadCast) + new string('1', takeBroadCast);
-
-			List<string> ipAddressEndList = new List<string>();
-
-			string ipAddressBase = string.Join('.', ipBaseCalculated);
-
-			for (int i = 0; i < subnetsRequired; i++)
-			{
-				for (int j = 0; j < ipBaseCalculated.Count; j++)
-				{
-					if (j == 3)
-					{
-						ipAddressEndList.Add((int.Parse(ipBaseCalculated[j]) + (jump * (i + 1))).ToString());
-					}
-					else
-					{
-						ipAddressEndList.Add(ipBaseCalculated[j]);
-					}
-				}
-				string ipAddressEnd = string.Join('.', ipAddressEndList);
-
-
-				GetRange(ipAddressBase, ipAddressEnd);
-
-				Console.WriteLine(i + "_-");
-				ipAddressBase = ipAddressEnd;
-
-				ipAddressEndList.Clear();
-			}
-
-
-			Console.WriteLine(Convert.ToInt32(prueba.Substring(0, 8), 2));
-			*/
 		}
 
 		public void SubnetVlsm(List<int> hosts, string ipAddress, int mask, int subnetsRequired)
@@ -248,14 +207,6 @@ namespace Subnetting_Calculator.Models
 			}
 
 			return result;
-		}
-
-		public void GetRange(string ipAddressBase, string ipAddressEnd)
-		{
-			for (int i = int.Parse(ipAddressBase.Split('.')[3]); i < int.Parse(ipAddressEnd.Split('.')[3]); i++)
-			{
-				Console.WriteLine(ipAddressBase.Split('.')[0] + ipAddressBase.Split('.')[1] + ipAddressBase.Split('.')[2] + i);
-			}
 		}
 
 		public IEnumerable<char> ConvertToBinary(int number)

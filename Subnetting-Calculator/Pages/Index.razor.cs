@@ -78,7 +78,6 @@ namespace Subnetting_Calculator.Pages
 
 			bool isNull = List.All(x => x != null);
 
-			/*TotalHost = List.Sum(x => x + 2);*/ // Esto sería creo que para comprobar en VLSM
 			int total = 0;
 
 			if (Vlsm)
@@ -128,6 +127,8 @@ namespace Subnetting_Calculator.Pages
 				{
 					//NO ESTÁ HECHO ES COPIA Y PEGA
 					subnetting.SubnetVlsm(list, IpBase, Mask, SubnetNumber);
+					_paramsList = subnetting.paramsList;
+					await DrawResultJS();
 				}
 			}
 			else
