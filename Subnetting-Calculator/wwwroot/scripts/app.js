@@ -82,17 +82,6 @@ export function drawResult(paramList) {
         tbody.appendChild(newRow);
     });
 
-    //for (let i = 0; i < paramList.length; i++) {
-    //    var newRow = document.createElement("tr");
-    //    for (let j = 0; j < paramList[i].length; j++) {
-    //        var newColumn = document.createElement("td");
-    //        newColumn.innerHTML = paramList[i][j];
-    //        j == 0 ? newColumn.setAttribute("scope", "row") : "";
-
-    //        newRow.appendChild(newColumn);
-    //    }
-    //    tbody.appendChild(newRow);
-    //}
     table.appendChild(tbody);
 
     console.log("prueba");
