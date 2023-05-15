@@ -156,21 +156,23 @@ namespace Subnetting_Calculator.Models
 
 			List<string> ipBaseCalculated = MultiplyInBinary(ipInBinaryDivide, maskInBinaryDivide); //Calcula IP Base
 
-			int hostBits = FindHostBits(hosts.Max(x => x)); //Bits de hosts (Coge el valor máximo porque al ser FLSM todas tienen que ser iguales, pero eso no quiere decir que no puedas meter distintos tamaños en cada subred, por eso se coje el más grande para que todas sean iguales y quepan)
 
-			int newMask = TOTALBITS - hostBits; //Obtenemos la nueva máscara
-			string newMaskInBinary = "".PadLeft(newMask, '1').PadRight(32, '0'); //Pasamos la máscara a binario
-
-			List<string> newMaskInBinaryDivide = DivideInOct(newMaskInBinary); //Dividimos la máscara en octetos
-
-			int changedPosition = FindChangedPosition(newMaskInBinaryDivide); //Calculamos la posición de la máscara que varía
-
-			int jump = (int)Math.Pow(2, hostBits); //Calculamos el salto elevando dos a el número de bits de host sacado arriba
-
-			List<string> jumpInBinary = DivideInOct(string.Concat(ConvertToBinary(jump)).PadLeft(32, '0').PadRight(32, '0')); //Convertimos el salto en binario
-
+			
 			for (int i = 0; i < subnetsRequired; i++)
 			{
+				int hostBits = FindHostBits(hosts[i]); //Bits de hosts (Coge el valor máximo porque al ser FLSM todas tienen que ser iguales, pero eso no quiere decir que no puedas meter distintos tamaños en cada subred, por eso se coje el más grande para que todas sean iguales y quepan)
+
+				int newMask = TOTALBITS - hostBits; //Obtenemos la nueva máscara
+				string newMaskInBinary = "".PadLeft(newMask, '1').PadRight(32, '0'); //Pasamos la máscara a binario
+
+				List<string> newMaskInBinaryDivide = DivideInOct(newMaskInBinary); //Dividimos la máscara en octetos
+
+				int changedPosition = FindChangedPosition(newMaskInBinaryDivide); //Calculamos la posición de la máscara que varía
+
+				int jump = (int)Math.Pow(2, hostBits); //Calculamos el salto elevando dos a el número de bits de host sacado arriba
+
+				List<string> jumpInBinary = DivideInOct(string.Concat(ConvertToBinary(jump)).PadLeft(32, '0').PadRight(32, '0')); //Convertimos el salto en binario
+
 				List<string> ipBaseInBinary = new List<string>();
 
 				ipBaseCalculated.ForEach(item => ipBaseInBinary.Add(string.Concat(ConvertToBinary(int.Parse(item))).PadLeft(8, '0').PadRight(8, '0'))); //Transformamos la IP Base en binario
