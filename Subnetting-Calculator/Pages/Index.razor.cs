@@ -6,7 +6,7 @@ namespace Subnetting_Calculator.Pages
 {
 	public partial class Index
 	{
-		public const int TOTALBITS = 32;
+		public static readonly int TOTALBITS = 32;
 
 		private IJSInProcessObjectReference _module;
 

@@ -1,11 +1,11 @@
 ﻿using System.Text.RegularExpressions;
 using Subnetting_Calculator.Pages;
+using Index = Subnetting_Calculator.Pages.Index;
 
 namespace Subnetting_Calculator.Models
 {
 	public class Subnetting
 	{
-		public const int TOTALBITS = 32;
 		public List<List<string>> paramsList = new List<List<string>>();
 
 		public void SubnetFlsm(List<int> hosts, string ipAddress, int mask, int subnetsRequired)
@@ -29,7 +29,7 @@ namespace Subnetting_Calculator.Models
 
 			int hostBits = FindHostBits(hosts.Max(x => x)); //Bits de hosts (Coge el valor máximo porque al ser FLSM todas tienen que ser iguales, pero eso no quiere decir que no puedas meter distintos tamaños en cada subred, por eso se coje el más grande para que todas sean iguales y quepan)
 
-			int newMask = TOTALBITS - hostBits; //Obtenemos la nueva máscara
+			int newMask = Index.TOTALBITS - hostBits; //Obtenemos la nueva máscara
 			string newMaskInBinary = "".PadLeft(newMask, '1').PadRight(32, '0'); //Pasamos la máscara a binario
 
 			List<string> newMaskInBinaryDivide = DivideInOct(newMaskInBinary); //Dividimos la máscara en octetos
@@ -121,7 +121,7 @@ namespace Subnetting_Calculator.Models
 			{
 				int hostBits = FindHostBits(hosts[i]); //Bits de hosts (Coge el valor máximo porque al ser FLSM todas tienen que ser iguales, pero eso no quiere decir que no puedas meter distintos tamaños en cada subred, por eso se coje el más grande para que todas sean iguales y quepan)
 
-				int newMask = TOTALBITS - hostBits; //Obtenemos la nueva máscara
+				int newMask = Index.TOTALBITS - hostBits; //Obtenemos la nueva máscara
 				string newMaskInBinary = "".PadLeft(newMask, '1').PadRight(32, '0'); //Pasamos la máscara a binario
 
 				List<string> newMaskInBinaryDivide = DivideInOct(newMaskInBinary); //Dividimos la máscara en octetos
