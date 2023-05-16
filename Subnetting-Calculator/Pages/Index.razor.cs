@@ -84,7 +84,10 @@ namespace Subnetting_Calculator.Pages
 			{
 				foreach (var host in HostList)
 				{
-					total += (int)Math.Pow(2, FindHostBits(host.Value));
+					if (host.HasValue)
+					{
+						total += (int)Math.Pow(2, FindHostBits(host.Value));
+					}
 				}
 
 				TotalHost = total;
