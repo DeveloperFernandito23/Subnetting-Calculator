@@ -17,7 +17,19 @@ export function takeIp() {
 }
 
 export function error() {
-    alert("ERROR AL INTRODUCIR LOS DATOS");
+    alert('ERROR AL INTRODUCIR LOS DATOS.', 'danger');
+}
+var alertPlaceholder = document.getElementById('liveAlert');
+
+export function alert(message, type) {
+    var wrapper = document.createElement('div');
+    wrapper.innerHTML = '<div class="alert alert-' + type + ' alert-dismissible" role="alert"> <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:"><use xlink:href="#exclamation-triangle-fill" /></svg>' + message + '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>';
+
+    alertPlaceholder.append(wrapper);
+}
+
+export function prueba() {
+    alertPlaceholder.remove();
 }
 
 export function drawResult(subnetClassList) {
@@ -132,3 +144,7 @@ export function drawResult(subnetClassList) {
     console.log("llega?");
 
 }
+
+//$('#myAlert').on('closed.bs.alert', function () {
+//    // do something…
+//})

@@ -1,35 +1,13 @@
-﻿/*#main-container{
-    width: 50%;
+﻿.info-alert {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    z-index: 9999;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #c5e1a5;
+    color: #333;
+    font-weight: bold;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
 }
-
-#base-ip {
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: row;
-    align-content: center;
-    justify-content: space-between;
-    align-items: flex-start;
-}
-
-#subnets {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    align-items: center;
-}
-
-#subnet-number {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: flex-end;
-    flex: 2 100%;
-    align-items: flex-start;
-    gap: 45px;
-}
-
-#submit-btn {
-    margin: 2vh 0;
-    display: flex;
-    justify-content: center;
-}*/
