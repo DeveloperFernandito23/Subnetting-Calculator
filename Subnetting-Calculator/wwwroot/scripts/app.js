@@ -101,7 +101,7 @@ export function drawResult(subnetClassList) {
 
         var subnetRange = document.createElement("td");
         subnetRange.innerHTML = "";
-        subnetRange.innerHTML = `${subnet.RangeStart.join('.')} - ${subnet.RangeEnd.join('.') }`;
+        subnetRange.innerHTML = `${subnet.RangeStart.join('.')} - ${subnet.RangeEnd.join('.')}`;
 
         var subnetBroadcast = document.createElement("td");
         subnetBroadcast.innerHTML = "";
