@@ -97,19 +97,19 @@ export function drawResult(subnetClassList) {
 
         var subnetIPBase = document.createElement("td");
         subnetIPBase.innerHTML = "";
-        subnetIPBase.innerHTML = subnet.IPBase;
+        subnetIPBase.innerHTML = subnet.IPBase.join('.');
 
         var subnetRange = document.createElement("td");
         subnetName.innerHTML = "";
-        subnetRange.innerHTML = `${subnet.RangeStart} - ${subnet.RangeEnd}`;
+        subnetRange.innerHTML = `${subnet.RangeStart.join('.')} - ${subnet.RangeEnd.join('.') }`;
 
         var subnetBroadcast = document.createElement("td");
         subnetBroadcast.innerHTML = "";
-        subnetBroadcast.innerHTML = subnet.Broadcast;
+        subnetBroadcast.innerHTML = subnet.Broadcast.join('.');
 
         var subnetMask = document.createElement("td");
         subnetMask.innerHTML = "";
-        subnetMask.innerHTML = subnet.Mask;
+        subnetMask.innerHTML = subnet.Mask.join('.');
 
         var subnetCIDR = document.createElement("td");
         subnetCIDR.innerHTML = "";
