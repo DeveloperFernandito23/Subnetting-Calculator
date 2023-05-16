@@ -20,10 +20,13 @@ export function error() {
     alert("ERROR AL INTRODUCIR LOS DATOS");
 }
 
-export function drawResult(paramList) {
+export function drawResult(subnetClassList) {
+
+    var subnetList = JSON.parse(subnetClassList);
+
     var table = document.getElementsByClassName("table")[0];
-    var tbody = table.getElementsByClassName("tbody")[0];
     var thead = table.getElementsByClassName("thead-dark")[0];
+    var tbody = table.getElementsByClassName("tbody")[0];
     thead.innerHTML = "";
     tbody.innerHTML = "";
 
@@ -31,57 +34,98 @@ export function drawResult(paramList) {
     //lan, host, totalHost, ipBase, maskString, cidr, availableHost, broadCast
 
     var rowHead = document.createElement("tr");
-    var column1Head = document.createElement("th");
-    column1Head.setAttribute("scope", "col");
-    column1Head.innerHTML = "Subnet Name";
-    var column2Head = document.createElement("th");
-    column2Head.setAttribute("scope", "col");
-    column2Head.innerHTML = "Size Required";
-    var column3Head = document.createElement("th");
-    column3Head.setAttribute("scope", "col");
-    column3Head.innerHTML = "New Size";
-    var column4Head = document.createElement("th");
-    column4Head.setAttribute("scope", "col");
-    column4Head.innerHTML = "IP Base";
-    var column5Head = document.createElement("th");
-    column5Head.setAttribute("scope", "col");
-    column5Head.innerHTML = "Mask";
-    var column6Head = document.createElement("th");
-    column6Head.setAttribute("scope", "col");
-    column6Head.innerHTML = "CIDR";
-    var column7Head = document.createElement("th");
-    column7Head.setAttribute("scope", "col");
-    column7Head.innerHTML = "IP Range";
-    var column8Head = document.createElement("th");
-    column8Head.setAttribute("scope", "col");
-    column8Head.innerHTML = "BroadCast";
+
+    var subnetNameTh = document.createElement("th");
+    subnetNameTh.setAttribute("scope", "col");
+    subnetNameTh.innerHTML = "Subnet Name";
+
+    var subnetRequiredSizeTh = document.createElement("th");
+    subnetRequiredSizeTh.setAttribute("scope", "col");
+    subnetRequiredSizeTh.innerHTML = "Size Required";
+
+    var subnetTotalSizeTh = document.createElement("th");
+    subnetTotalSizeTh.setAttribute("scope", "col");
+    subnetTotalSizeTh.innerHTML = "Total Size";
+
+    var subnetIPBaseTh = document.createElement("th");
+    subnetIPBaseTh.setAttribute("scope", "col");
+    subnetIPBaseTh.innerHTML = "IP Base";
+
+    var subnetRangeTh = document.createElement("th");
+    subnetRangeTh.setAttribute("scope", "col");
+    subnetRangeTh.innerHTML = "IP Range";
+
+    var subnetBroadcastTh = document.createElement("th");
+    subnetBroadcastTh.setAttribute("scope", "col");
+    subnetBroadcastTh.innerHTML = "Broadast";
+
+    var subnetMaskTh = document.createElement("th");
+    subnetMaskTh.setAttribute("scope", "col");
+    subnetMaskTh.innerHTML = "Mask";
+
+    var subnetCIDRTh = document.createElement("th");
+    subnetCIDRTh.setAttribute("scope", "col");
+    subnetCIDRTh.innerHTML = "CIDR";
+
 
     table.appendChild(thead);
     thead.appendChild(rowHead);
-    rowHead.appendChild(column1Head);
-    rowHead.appendChild(column2Head);
-    rowHead.appendChild(column3Head);
-    rowHead.appendChild(column4Head);
-    rowHead.appendChild(column5Head);
-    rowHead.appendChild(column6Head);
-    rowHead.appendChild(column7Head);
-    rowHead.appendChild(column8Head);
 
-    paramList.forEach(list => {
+    rowHead.appendChild(subnetNameTh);
+    rowHead.appendChild(subnetRequiredSizeTh);
+    rowHead.appendChild(subnetTotalSizeTh);
+    rowHead.appendChild(subnetIPBaseTh);
+    rowHead.appendChild(subnetRangeTh);
+    rowHead.appendChild(subnetBroadcastTh);
+    rowHead.appendChild(subnetMaskTh);
+    rowHead.appendChild(subnetCIDRTh);
+
+    subnetList.forEach(subnet => {
         var newRow = document.createElement("tr");
 
-        list.forEach((row, index) => {
-            var newColumn = document.createElement("td");
-            newColumn.innerHTML = row;
+        var subnetName = document.createElement("td");
+        subnetName.innerHTML = "";
+        subnetName.innerHTML = subnet.Name;
 
-            index == 0 ? newColumn.setAttribute("scope", "row") : newColumn.setAttribute("scope", "");
+        var subnetRequiredSize = document.createElement("td");
+        subnetRequiredSize.innerHTML = "";
+        subnetRequiredSize.innerHTML = subnet.Size;
 
-            newRow.appendChild(newColumn);
-        });
+        var subnetTotalSize = document.createElement("td");
+        subnetTotalSize.innerHTML = "";
+        subnetTotalSize.innerHTML = subnet.TotalSize;
+
+        var subnetIPBase = document.createElement("td");
+        subnetIPBase.innerHTML = "";
+        subnetIPBase.innerHTML = subnet.IPBase;
+
+        var subnetRange = document.createElement("td");
+        subnetName.innerHTML = "";
+        subnetRange.innerHTML = `${subnet.RangeStart} - ${subnet.RangeEnd}`;
+
+        var subnetBroadcast = document.createElement("td");
+        subnetBroadcast.innerHTML = "";
+        subnetBroadcast.innerHTML = subnet.Broadcast;
+
+        var subnetMask = document.createElement("td");
+        subnetMask.innerHTML = "";
+        subnetMask.innerHTML = subnet.Mask;
+
+        var subnetCIDR = document.createElement("td");
+        subnetCIDR.innerHTML = "";
+        subnetCIDR.innerHTML = subnet.CIDR;
 
         tbody.appendChild(newRow);
+        newRow.appendChild(subnetName);
+        newRow.appendChild(subnetRequiredSize);
+        newRow.appendChild(subnetTotalSize);
+        newRow.appendChild(subnetIPBase);
+        newRow.appendChild(subnetRange);
+        newRow.appendChild(subnetBroadcast);
+        newRow.appendChild(subnetMask);
+        newRow.appendChild(subnetCIDR);
     });
-
+    
     table.appendChild(tbody);
 
     console.log("prueba");
