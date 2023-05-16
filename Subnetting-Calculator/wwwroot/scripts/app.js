@@ -100,7 +100,7 @@ export function drawResult(subnetClassList) {
         subnetIPBase.innerHTML = subnet.IPBase.join('.');
 
         var subnetRange = document.createElement("td");
-        subnetName.innerHTML = "";
+        subnetRange.innerHTML = "";
         subnetRange.innerHTML = `${subnet.RangeStart.join('.')} - ${subnet.RangeEnd.join('.') }`;
 
         var subnetBroadcast = document.createElement("td");
