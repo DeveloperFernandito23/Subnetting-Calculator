@@ -1,5 +1,4 @@
 ﻿using System.Text.RegularExpressions;
-using Subnetting_Calculator.Pages;
 
 namespace Subnetting_Calculator.Models
 {
@@ -92,7 +91,7 @@ namespace Subnetting_Calculator.Models
 
 				paramsList.Add(new() { lan, host, totalHost, ipBase, maskString, cidr, availableHost, broadCast });
 
-                ipBaseCalculated = nextIp;
+				 ipBaseCalculated = nextIp;
 			}
 		}
 
