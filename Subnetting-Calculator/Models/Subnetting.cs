@@ -1,5 +1,4 @@
 ﻿using System.Text.RegularExpressions;
-using Subnetting_Calculator.Pages;
 using Index = Subnetting_Calculator.Pages.Index;
 
 namespace Subnetting_Calculator.Models
@@ -88,14 +87,7 @@ namespace Subnetting_Calculator.Models
 
 			_subnetsList.Add(subnet);
 
-				List<string> nextIp = SumInBinary(ipBaseInBinary, jumpInBinary);
-
-				Console.WriteLine("-------------------------------------------------");
-
-				paramsList.Add(new() { lan, host, totalHost, ipBase, maskString, cidr, availableHost, broadCast });
-
-                ipBaseCalculated = nextIp;
-			}
+			return BinaryOperator(ipBaseInBinary, JumpInBinary, '+');
 		}
 
 		public void SubnetFlsm(List<int> hosts, List<int> ipAddress, int mask, int subnetsRequired)
@@ -116,8 +108,8 @@ namespace Subnetting_Calculator.Models
 		{
 			List<int> ipBaseCalculated = GetIPBase(ipAddress, mask);
 
-			hosts = hosts.OrderByDescending(x=> x).ToList();
-			
+			hosts = hosts.OrderByDescending(x => x).ToList();
+
 			for (int i = 0; i < subnetsRequired; i++)
 			{
 				HostBits = Index.FindHostBits(hosts[i]); //Bits de hosts (Coge el valor máximo porque al ser FLSM todas tienen que ser iguales, pero eso no quiere decir que no puedas meter distintos tamaños en cada subred, por eso se coje el más grande para que todas sean iguales y quepan)
@@ -187,7 +179,25 @@ namespace Subnetting_Calculator.Models
 				int num1 = Convert.ToInt32(binary1[i], 2);
 				int num2 = Convert.ToInt32(binary2[i], 2);
 
-				result.Add(option == '+' ? num1 + num2 : num1 & num2);
+				//result.Add(option == '+' ? num1 + num2 : num1 & num2);
+
+				if (option == '+')
+				{
+					if ((num1 + num2) < 255)
+					{
+						result.Add(num1 + num2);
+					}
+					else
+					{
+						result[i - 1] += 1;
+						result.Add(0);
+					}
+
+				}
+				else
+				{
+					result.Add(num1 & num2);
+				}
 			}
 
 			return result;

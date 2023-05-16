@@ -73,7 +73,7 @@ namespace Subnetting_Calculator.Pages
 			await CheckHostJS();
 
 			bool isNull = HostList.All(x => x.HasValue);
-			
+
 			int total = 0;
 
 			if (!Vlsm)

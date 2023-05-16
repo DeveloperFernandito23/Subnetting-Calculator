@@ -21,7 +21,7 @@
 		public List<int> Broadcast { get => _broadcast; set => _broadcast = value; }
 		public IEnumerable<int> Mask { get => _mask; set => _mask = value; }
 		public int CIDR { get => _cidr; set => _cidr = value; }
-		
+
 		public Subnet()
 		{
 		}

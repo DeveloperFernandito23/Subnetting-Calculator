@@ -125,7 +125,7 @@ export function drawResult(subnetClassList) {
         newRow.appendChild(subnetMask);
         newRow.appendChild(subnetCIDR);
     });
-    
+
     table.appendChild(tbody);
 
     console.log("prueba");
