@@ -4,20 +4,20 @@
 
 <PageTitle>Subnetting Calculator</PageTitle>
 
-<div id="main-container" class="container border rounded">
+<div id="main-container" class="container border rounded w-50">
 	<div id="base-ip" class="row">
 		<div class="col-md-3">
 			<p>Base IP</p>
 		</div>
 		<div class="col-md-3">
-			<input type="text" id="base-ip-value" />
+			<input type="text" id="base-ip-value" placeholder="xxx.xxx.xxx.xxx/XX"/>
 		</div>
 	</div>
 	<div id="subnets" class="row">
 		<div id="subnet-title" class="col-md-3">
 			<p>Subnets</p>
 		</div>
-		<div id="subnet-container" class="col-md-3">
+		<div id="subnet-container" class="col-md-3 w-50">
 			<table>
 				<thead>
 					<tr>
@@ -29,36 +29,38 @@
 					@for(int i = 1; i <= SubnetNumber; i++)
 					{
 						<tr>
-							<td><input type="text" value="LAN @i" /></td>
-							<td><input type="number" min="1" class="size"/></td>
+							<td class="w-25"><input type="text" value="LAN @i"/></td>
+							<td><input type="number" min="1" class="size" placeholder="20" style="width:50px"/></td>
 						</tr>
 					}
 				</tbody>
 			</table>
 
 		</div>
-		<div id="subnet-number" class="row">
-			<div class="col-md-3">
-				<p> Number of subnets</p>
-			</div>
-			<div class="col-md-3">
-				<input type="number" min="1" @bind="SubnetNumber" />
-			</div>
-		</div>
+		
 	</div>
-	<div id="submit-btn" class="d-flex flex-column flex-wrap align-content-center">
-		<div class="col-3">
-			<input type="checkbox" @bind="Vlsm" class="form-check-input"/>
+	<div id="subnet-number" class="row" style="margin-top: 1vh">
+		<div class="col-md-3">
+			<p> Number of subnets</p>
+		</div>
+		<div class="col-md-5">
+			<input type="number" min="1" @bind="SubnetNumber" />
+		</div>
+		<div class="col-md-3">
+			<input type="checkbox" @bind="Vlsm" class="form-check-input" />
 			<label class="form-check-label" for="flexCheckChecked">
 				VLSM
 			</label>
 		</div>
+	</div>
+	<div id="submit-btn" class="d-flex flex-column flex-wrap align-content-center">
+		
 		<input type="submit" value="Calculate" @onclick="Calculate" class="btn btn-primary" />
 
 	</div>
 </div>
 
-<div class="table-responsive">
+<div class="table-responsive mt-5">
 	<table class="table">
 		<thead class="thead-dark">
 
