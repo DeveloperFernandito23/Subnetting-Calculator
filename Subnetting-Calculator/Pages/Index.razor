@@ -7,7 +7,7 @@
 <div id="liveAlert"></div>
 <div id="main-container" class="container border rounded w-50 ">
 	<div id="base-ip" class="row">
-		<div class="col-md-3">
+		<div class="col-md-3 fw-bold">
 			<p>Base IP</p>
 		</div>
 		<div class="col-md-3">
@@ -15,7 +15,7 @@
 		</div>
 	</div>
 	<div id="subnets" class="row">
-		<div id="subnet-title" class="col-md-3">
+		<div id="subnet-title" class="col-md-3 d-flex align-items-center fw-bold">
 			<p>Subnets</p>
 		</div>
 		<div id="subnet-container" class="col-md-3 w-50">
@@ -30,7 +30,7 @@
 					@for(int i = 1; i <= SubnetNumber; i++)
 					{
 						<tr>
-							<td class="w-25"><input type="text" value="LAN @i"/></td>
+							<td class="w-25"><input type="text" value="LAN @i" readonly/></td>
 							<td><input type="number" min="1" class="size" placeholder="20" style="width:50px"/></td>
 						</tr>
 					}
@@ -41,7 +41,7 @@
 		
 	</div>
 	<div id="subnet-number" class="row" style="margin-top: 1vh">
-		<div class="col-md-3">
+		<div class="col-md-3 fw-bold">
 			<p> Number of subnets</p>
 		</div>
 		<div class="col-md-5">
