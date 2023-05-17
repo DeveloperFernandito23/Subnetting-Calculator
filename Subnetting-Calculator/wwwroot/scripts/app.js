@@ -19,20 +19,20 @@ var alertPlaceholder = document.getElementById('liveAlert');
 
 export function error() {
     if (alertPlaceholder.innerHTML.length == 0) {
-        alert('ERROR AL INTRODUCIR LOS DATOS.', 'danger');
+        alert('<svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:"><use xlink:href="#exclamation-triangle-fill" /></svg> ERROR AL INTRODUCIR LOS DATOS.', 'danger');
         var myAlert = document.getElementById('alert-content');
 
         myAlert.addEventListener('closed.bs.alert', () => {
             var removeElement = document.getElementById("alert");
             alertPlaceholder.removeChild(removeElement);
-        })
+        });
     }
 }
 
-export function alert(message, type) {
+function alert(message, type) {
     var wrapper = document.createElement('div');
     wrapper.setAttribute("id", "alert");
-    wrapper.innerHTML = '<div class="alert alert-' + type + ' alert-dismissible" role="alert" id="alert-content"> <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:"><use xlink:href="#exclamation-triangle-fill" /></svg>' + message + '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>';
+    wrapper.innerHTML = '<div class="alert alert-' + type + ' alert-dismissible" role="alert" id="alert-content">' + message + '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>';
 
     alertPlaceholder.append(wrapper);
 }
@@ -148,4 +148,23 @@ export function drawResult(subnetClassList) {
     console.log("prueba");
     console.log("llega?");
 
+}
+
+export function showMessage() {
+    var icon = '<svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Info:"><use xlink:href="#info-fill" /></svg>'
+    var headerAlert = '<h4 class="alert-heading">INFORMATION MESSAGE!</h4>';
+    var textAlert = '<p>When you press calculate you get an error message, check that:First you have filled in all the fields.Then check the syntax that is illustrated below. And finally check if it is possible to do x subnets with those required hosts</p>';
+    var br = '<hr/>'
+    var sintax = '<p> The IP Base: 192.168.2.0/24 <br/> The host number: 20 <br/> The subnets number: 4'
+
+    if (alertPlaceholder.innerHTML.length == 0) {
+        alert(icon + headerAlert + textAlert + br + sintax, 'primary');
+
+        var myAlert = document.getElementById('alert-content');
+
+        myAlert.addEventListener('closed.bs.alert', () => {
+            var removeElement = document.getElementById("alert");
+            alertPlaceholder.removeChild(removeElement);
+        });
+    }
 }

@@ -40,6 +40,7 @@ namespace Subnetting_Calculator.Pages
 		private async Task CheckIPBaseJS() => IpBaseWithMask = await _module.InvokeAsync<string>("takeIp");
 		private async Task DrawResultJS() => await _module.InvokeVoidAsync("drawResult", JsonSerializer.Serialize(SubnetList));
 		private async Task ErrorJS() => await _module.InvokeVoidAsync("error");
+		private async Task ShowMessageJS() => await _module.InvokeVoidAsync("showMessage");
 
 		private async Task<bool> CheckIp()
 		{
