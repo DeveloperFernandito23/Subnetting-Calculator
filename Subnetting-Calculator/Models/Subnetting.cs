@@ -179,8 +179,6 @@ namespace Subnetting_Calculator.Models
 				int num1 = Convert.ToInt32(binary1[i], 2);
 				int num2 = Convert.ToInt32(binary2[i], 2);
 
-				//result.Add(option == '+' ? num1 + num2 : num1 & num2);
-
 				if (option == '+')
 				{
 					if ((num1 + num2) < 255)

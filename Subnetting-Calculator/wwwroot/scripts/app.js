@@ -15,6 +15,7 @@ export function takeIp() {
 
     return ip.value;
 }
+
 var alertPlaceholder = document.getElementById('liveAlert');
 
 export function error() {
@@ -46,7 +47,6 @@ export function drawResult(subnetClassList) {
     var tbody = table.getElementsByClassName("tbody")[0];
     thead.innerHTML = "";
     tbody.innerHTML = "";
-
 
     var rowHead = document.createElement("tr");
 
@@ -81,7 +81,6 @@ export function drawResult(subnetClassList) {
     var subnetCIDRTh = document.createElement("th");
     subnetCIDRTh.setAttribute("scope", "col");
     subnetCIDRTh.innerHTML = "CIDR";
-
 
     table.appendChild(thead);
     thead.appendChild(rowHead);
