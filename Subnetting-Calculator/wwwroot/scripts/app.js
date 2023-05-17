@@ -153,9 +153,9 @@ export function drawResult(subnetClassList) {
 export function showMessage() {
     var icon = '<svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Info:"><use xlink:href="#info-fill" /></svg>'
     var headerAlert = '<h4 class="alert-heading">INFORMATION MESSAGE!</h4>';
-    var textAlert = '<p>When you press calculate you get an error message, check that:First you have filled in all the fields.Then check the syntax that is illustrated below. And finally check if it is possible to do x subnets with those required hosts</p>';
+    var textAlert = '<p>When you press calculate you get an error message?, Check that: First you have filled in all the fields. Then check the syntax that is illustrated below. And finally check if it is possible to do x subnets with those required hosts</p>';
     var br = '<hr/>'
-    var sintax = '<p> The IP Base: 192.168.2.0/24 <br/> The host number: 20 <br/> The subnets number: 4'
+    var sintax = '<p> The IP Base: 192.168.2.0/24 <br/> The host number: 10 <br/> The subnets number: 4 <br/> This is a posible example</p>'
 
     if (alertPlaceholder.innerHTML.length == 0) {
         alert(icon + headerAlert + textAlert + br + sintax, 'primary');
