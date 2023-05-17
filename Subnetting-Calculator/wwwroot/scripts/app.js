@@ -130,7 +130,7 @@ export function drawResult(subnetClassList) {
 
         var subnetCIDR = document.createElement("td");
         subnetCIDR.innerHTML = "";
-        subnetCIDR.innerHTML = subnet.CIDR;
+        subnetCIDR.innerHTML = `/${subnet.CIDR}`;
 
         tbody.appendChild(newRow);
         newRow.appendChild(subnetName);

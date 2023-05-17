@@ -192,7 +192,6 @@ namespace Subnetting_Calculator.Models
 						result[i - 1] += 1;
 						result.Add(0);
 					}
-
 				}
 				else
 				{
