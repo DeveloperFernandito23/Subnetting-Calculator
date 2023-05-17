@@ -48,8 +48,6 @@ export function drawResult(subnetClassList) {
     tbody.innerHTML = "";
 
 
-    //lan, host, totalHost, ipBase, maskString, cidr, availableHost, broadCast
-
     var rowHead = document.createElement("tr");
 
     var subnetNameTh = document.createElement("th");
@@ -144,10 +142,6 @@ export function drawResult(subnetClassList) {
     });
 
     table.appendChild(tbody);
-
-    console.log("prueba");
-    console.log("llega?");
-
 }
 
 export function showMessage() {
