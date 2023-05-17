@@ -20,7 +20,7 @@ var alertPlaceholder = document.getElementById('liveAlert');
 
 export function error() {
     if (alertPlaceholder.innerHTML.length == 0) {
-        alert('<svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:"><use xlink:href="#exclamation-triangle-fill" /></svg> ERROR AL INTRODUCIR LOS DATOS.', 'danger');
+        alert('<svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:"><use xlink:href="#exclamation-triangle-fill" /></svg> ERROR INTRODUCING DATA.', 'danger');
         var myAlert = document.getElementById('alert-content');
 
         myAlert.addEventListener('closed.bs.alert', () => {
