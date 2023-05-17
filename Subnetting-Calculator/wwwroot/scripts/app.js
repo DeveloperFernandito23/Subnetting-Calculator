@@ -32,7 +32,7 @@ export function error() {
 function alert(message, type) {
     var wrapper = document.createElement('div');
     wrapper.setAttribute("id", "alert");
-    wrapper.innerHTML = '<div class="alert alert-' + type + ' alert-dismissible" role="alert" id="alert-content">' + message + '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>';
+    wrapper.innerHTML = '<div class="fade show alert alert-' + type + ' alert-dismissible" role="alert" id="alert-content">' + message + '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>';
 
     alertPlaceholder.append(wrapper);
 }
@@ -155,7 +155,7 @@ export function showMessage() {
     var headerAlert = '<h4 class="alert-heading">INFORMATION MESSAGE!</h4>';
     var textAlert = '<p>When you press calculate you get an error message?, Check that: First you have filled in all the fields. Then check the syntax that is illustrated below. And finally check if it is possible to do x subnets with those required hosts</p>';
     var br = '<hr/>'
-    var sintax = '<p> The IP Base: 192.168.2.0/24 <br/> The host number: 10 <br/> The subnets number: 4 <br/> This is a posible example</p>'
+    var sintax = '<p> The IP Base: 192.168.2.0/24 <br/> The host number: 10 <br/> The subnets number: 4 <br/> <strong>This is a posible example</strong></p>'
 
     if (alertPlaceholder.innerHTML.length == 0) {
         alert(icon + headerAlert + textAlert + br + sintax, 'primary');
