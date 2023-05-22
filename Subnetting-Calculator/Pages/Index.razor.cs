@@ -36,15 +36,15 @@ namespace Subnetting_Calculator.Pages
 			_module = await JSRuntime.InvokeAsync<IJSInProcessObjectReference>("import", "./scripts/app.js");
 		}
 
-		private async Task CheckHostJS() => HostList = await _module.InvokeAsync<List<int?>>("totalHost");
-		private async Task CheckIPBaseJS() => IpBaseWithMask = await _module.InvokeAsync<string>("takeIp");
-		private async Task DrawResultJS() => await _module.InvokeVoidAsync("drawResult", JsonSerializer.Serialize(SubnetList));
-		private async Task ErrorJS() => await _module.InvokeVoidAsync("error");
-		private async Task ShowMessageJS() => await _module.InvokeVoidAsync("showMessage");
+		private async Task CheckHostAsyncJS() => HostList = await _module.InvokeAsync<List<int?>>("totalHost");
+		private async Task CheckIPBaseAsyncJS() => IpBaseWithMask = await _module.InvokeAsync<string>("takeIp");
+		private async Task DrawResultAsyncJS() => await _module.InvokeVoidAsync("drawResult", JsonSerializer.Serialize(SubnetList));
+		private async Task ErrorAsyncJS() => await _module.InvokeVoidAsync("error");
+		private async Task ShowMessageAsyncJS() => await _module.InvokeVoidAsync("showMessage");
 
-		private async Task<bool> CheckIp()
+		private async Task<bool> CheckIpAsync()
 		{
-			await CheckIPBaseJS();
+			await CheckIPBaseAsyncJS();
 
 			bool result = false;
 
@@ -69,9 +69,9 @@ namespace Subnetting_Calculator.Pages
 			return result;
 		}
 
-		private async Task<bool> CheckHosts()
+		private async Task<bool> CheckHostsAsync()
 		{
-			await CheckHostJS();
+			await CheckHostAsyncJS();
 
 			bool isNull = HostList.All(x => x.HasValue);
 
@@ -101,10 +101,10 @@ namespace Subnetting_Calculator.Pages
 			return isNull && totalHostsAvaliable >= TotalHost;
 		}
 
-		private async Task Calculate()
+		private async Task CalculateAsync()
 		{
-			bool checkIPBase = await CheckIp();
-			bool checkHosts = await CheckHosts();
+			bool checkIPBase = await CheckIpAsync();
+			bool checkHosts = await CheckHostsAsync();
 			bool checkSubnets = SubnetNumber > 0;
 
 
@@ -122,7 +122,7 @@ namespace Subnetting_Calculator.Pages
 
 					SubnetList = subnetting.SubnetsList;
 
-					await DrawResultJS();
+					await DrawResultAsyncJS();
 				}
 				else
 				{
@@ -130,12 +130,12 @@ namespace Subnetting_Calculator.Pages
 
 					SubnetList = subnetting.SubnetsList;
 
-					await DrawResultJS();
+					await DrawResultAsyncJS();
 				}
 			}
 			else
 			{
-				await ErrorJS();
+				await ErrorAsyncJS();
 			}
 		}
 		public static int FindHostBits(int host)
